@@ -1,0 +1,14 @@
+{
+	"name": "portfolio-builder",
+	"version": "1.0.0",
+	"description": "🔥 The Complete Customizable Software which lets you create Developer Portfolio to showcase your work and provides each and every detail about you as Software Developer.",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js"
+	},
+	"author": "HariKanani",
+	"license": "MIT",
+	"dependencies": {
+		"inquirer": "^7.1.0"
+	}
+}
