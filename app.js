@@ -112,7 +112,7 @@ const promptExperience = (portfolioData) => {
 				type: "input",
 				name: "link",
 				message:
-					"link to certificate or recommendation letter of your work",
+					"Link to certificate or recommendation letter of your work",
 			},
 			{
 				type: "confirm",
