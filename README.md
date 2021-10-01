@@ -45,10 +45,10 @@ This Command will start the node.js program. You will be asked some question to 
         Experience :
         1. What is the title (role) of your experience?
         2. Provide a description of your experience? (Required)
-        3. In which fields do you work?
-        Select the field of work that match with yours using <space>, select all fields using <a>, invert the selection using <i>, navigate the lists using arrow key.
-        4. Link to certificate or recommendation letter of your work
-        5. Would you like to add another experience?
+        3. On Which Technology you have work? (Check all that apply)
+        Select the technology that you use using <space>, select all using <a>, invert the selection using <i>, navigate the lists using arrow key.
+        4. Link to certificate or recommandation latter or your work
+        5. Would you like to add an experience?
 
 6. Open the `dist` Directory
 There will be 2 files `index.html` and `style.css`. This file is your newly created portfolio website.
