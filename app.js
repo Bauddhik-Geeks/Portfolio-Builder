@@ -56,6 +56,19 @@ const promptUser = () => {
 			message: "Provide some information about yourself:",
 			when: ({ confirmAbout }) => confirmAbout,
 		},
+		{
+			type: "confirm",
+			name: "confirmImage",
+			message:
+				'Would you like to include a Profile Image?',
+			default: true,
+		},
+		{
+			type: "input",
+			name: "imgUrl",
+			message: "Provide a URL of your profile image",
+			when: ({ confirmImage }) => confirmImage,
+		},
 	]);
 };
 
