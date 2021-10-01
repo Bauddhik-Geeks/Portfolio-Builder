@@ -1,0 +1,49 @@
+const LANGUAGES_LIST = [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "ES6",
+    "jQuery",
+    "Bootstrap",
+    "Node",
+    "Flutter",
+    "Dart",
+    "PHP",
+    "MySQL",
+    "MongoDB",
+    "PostgreSQL",
+    "Firebase",
+    "Flask",
+    "Next.JS",
+    "Python",
+    "Java",
+    "Ruby",
+    "Perl",
+    "C++",
+    "C#",
+    "GoLang",
+    "Deno",
+    "R",
+    "Swift",
+    "Matlab"
+];
+
+const TECHNOLOGY_LIST = [
+    "MERN",
+    "MEAN",
+	"PERN",
+	"LAMP",
+	"Backend",
+	"FrontEnd",
+    "Full-Stack",
+	"DevOps",
+	"Tester",
+	"UI/UX",
+	"Android",
+	"IOS",
+]
+
+module.exports={
+    LANGUAGES_LIST,
+    TECHNOLOGY_LIST
+}

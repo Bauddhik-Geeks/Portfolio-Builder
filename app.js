@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const { writeFile, copyFile } = require("./utils/generate-site.js");
 
 const generatePage = require("./src/page-template.js");
+const { LANGUAGES_LIST, TECHNOLOGY_LIST } = require("./src/constants/globalConstants")
 
 // const profileDataArgs = process.argv.slice(2);
 
@@ -95,18 +96,7 @@ const promptExperience = (portfolioData) => {
 				name: "technology",
 				message:
 					"On Which Technology you have work? (Check all that apply)",
-				choices: [
-					"MERN",
-					"PERN",
-					"LAMP",
-					"Backend",
-					"FrontEnd",
-					"DevOps",
-					"Tester",
-					"UI/UX",
-					"Android",
-					"IOS",
-				],
+				choices: TECHNOLOGY_LIST.sort(),
 			},
 			{
 				type: "input",
@@ -166,26 +156,7 @@ const promptProject = (portfolioData) => {
 				name: "languages",
 				message:
 					"What did you this project with? (Check all that apply)",
-				choices: [
-					"JavaScript",
-					"HTML",
-					"CSS",
-					"ES6",
-					"jQuery",
-					"Bootstrap",
-					"Node",
-					"Flutter",
-					"Dart",
-					"PHP",
-					"MySQL",
-					"MongoDB",
-					"PostgreSQL",
-					"Firebase",
-					"Flask",
-					"Next.JS",
-					"Python",
-					"Java",
-				],
+				choices: LANGUAGES_LIST.sort(),
 			},
 			{
 				type: "input",
