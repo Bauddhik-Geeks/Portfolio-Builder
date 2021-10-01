@@ -95,19 +95,19 @@ const promptExperience = (portfolioData) => {
 				type: "checkbox",
 				name: "technology",
 				message:
-					"On Which Technology you have work? (Check all that apply)",
+					"In which fields do you work? (Check all that apply)",
 				choices: TECHNOLOGY_LIST.sort(),
 			},
 			{
 				type: "input",
 				name: "link",
 				message:
-					"link to certificate or recommandation latter or your work",
+					"Link to certificate or recommendation letter of your work",
 			},
 			{
 				type: "confirm",
 				name: "confirmAddExperience",
-				message: "Would you like to add an experience?",
+				message: "Would you like to add another experience?",
 				default: false,
 			},
 		])
@@ -155,7 +155,7 @@ const promptProject = (portfolioData) => {
 				type: "checkbox",
 				name: "languages",
 				message:
-					"What did you this project with? (Check all that apply)",
+					"What languages did you use in this project? (Check all that apply)",
 				choices: LANGUAGES_LIST.sort(),
 			},
 			{
