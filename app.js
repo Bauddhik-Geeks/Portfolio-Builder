@@ -68,6 +68,14 @@ const promptUser = () => {
 			name: "imgUrl",
 			message: "Provide a URL of your profile image",
 			when: ({ confirmImage }) => confirmImage,
+			validate: (link) => {
+				if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+					return true;
+				} else {
+					console.log("Please enter a valid link or leave it blank");
+					return false;
+				}
+			},
 		},
 	]);
 };
@@ -115,7 +123,15 @@ const promptExperience = (portfolioData) => {
 				type: "input",
 				name: "link",
 				message:
-					"link to certificate or recommandation latter or your work",
+					"link to certificate or recommandation letter or your work",
+				validate: (link) => {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+						return true;
+					} else {
+						console.log("Please enter a valid link or leave it blank");
+						return false;
+					}
+				},
 			},
 			{
 				type: "confirm",
@@ -149,7 +165,15 @@ const promptProject = (portfolioData) => {
 			{
 				type: "input",
 				name: "name",
-				message: "What is the name of your project?",
+				message: "What is the name of your project? (Required)",
+				validate: (nameInput) => {
+					if (nameInput) {
+						return true;
+					} else {
+						console.log("Please enter your Project Name!");
+						return false;
+					}
+				},
 			},
 			{
 				type: "input",
@@ -176,10 +200,10 @@ const promptProject = (portfolioData) => {
 				name: "link",
 				message: "Enter the GitHub link to your project. (Required)",
 				validate: (nameInput) => {
-					if (nameInput) {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(nameInput) || nameInput.length == 0) {
 						return true;
 					} else {
-						console.log("Please enter your GitHub Link!");
+						console.log("Please enter your valid project link or leave it blank");
 						return false;
 					}
 				},
@@ -207,9 +231,122 @@ const promptProject = (portfolioData) => {
 		});
 };
 
+const promptContactDetails = (portfolioData) => {
+	if (!portfolioData.contactDetails) {
+		portfolioData.contactDetails = [];
+	}
+	console.log(`
+  ========================
+  Add your contact details
+  ========================
+  `);
+	return inquirer
+		.prompt([
+			{
+				type: "confirm",
+				name: "confirmEmail",
+				message:
+					'Would you like to enter a work email for contacting you?',
+				default: false,
+			},
+			{
+				type: "input",
+				name: "email",
+				message: "Enter your email",
+				when: ({ confirmEmail }) => confirmEmail,
+				validate: (email) => {
+					if (/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email)) {
+						return true;
+					} else {
+						console.log("Please enter a valid email");
+						return false;
+					}
+				},
+			},
+			{
+				type: "confirm",
+				name: "confirmNumber",
+				message:
+					'Would you like to enter a work phone for contacting you?',
+				default: false,
+			},
+			{
+				type: "input",
+				name: "number",
+				message: "Enter your number",
+				when: ({ confirmNumber }) => confirmNumber,
+				validate: (number) => {
+					if (number) {
+						return true;
+					} else {
+						console.log("Please enter your contact number");
+						return false;
+					}
+				},
+			},
+			{
+				type: "input",
+				name: "githubLink",
+				message: "Enter the link to your GitHub profile",
+				validate: (link) => {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+						return true;
+					} else {
+						console.log("Please enter your valid GitHub Link or leave it blank!");
+						return false;
+					}
+				},
+			},
+			{
+				type: "input",
+				name: "linkedinLink",
+				message: "Enter the link to your LinkedIn profile",
+				validate: (link) => {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+						return true;
+					} else {
+						console.log("Please enter your valid LinkedIn Link or leave it blank!");
+						return false;
+					}
+				},
+			},
+			{
+				type: "input",
+				name: "twitterLink",
+				message: "Enter the link to your Twitter profile",
+				validate: (link) => {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+						return true;
+					} else {
+						console.log("Please enter your valid Twitter Link or leave it blank!");
+						return false;
+					}
+				},
+			},
+			{
+				type: "input",
+				name: "instagramLink",
+				message: "Enter the link to your Instagram profile",
+				validate: (link) => {
+					if (/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig.test(link) || link.length == 0) {
+						return true;
+					} else {
+						console.log("Please enter your valid Instagram Link or leave it blank!");
+						return false;
+					}
+				},
+			},
+		])
+		.then((contactData) => {
+			portfolioData.contactDetails.push(contactData);
+			return portfolioData;
+		});
+};
+
 promptUser()
 	.then(promptProject)
 	.then(promptExperience)
+	.then(promptContactDetails)
 	.then((portfolioData) => {
 		return generatePage(portfolioData);
 	})

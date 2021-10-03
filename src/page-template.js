@@ -1,91 +1,114 @@
 // create the about section
 const generateAbout = (aboutText) => {
-	if (!aboutText) {
-		return "";
-	}
+  if (!aboutText) {
+    return "";
+  }
 
-	return `
-      <section class="my-3" id="about">
-        <h2 class="text-dark p-2 display-inline-block boldtext">About Me</h2>
-        <p>${aboutText}</p>
-      </section>
+  return `
+      ${aboutText !== "" ? `<section class="my-3" id="about">
+      <h2 class="text-dark p-2 display-inline-block boldtext">About Me</h2>
+      <p>${aboutText}</p>
+    </section>` : ""}
     `;
 };
 
 const generateProjects = (projectsArr) => {
-	return `
+  return `
       <section class="my-3" id="portfolio">
         <h2 class="text-dark  p-2 display-inline-block boldtext">Projects</h2>
         <div class="flex-row justify-space-between">
         ${projectsArr
-			.filter(({ feature }) => feature)
-			.map(({ name, description, languages, link }) => {
-				return `
+      .filter(({ feature }) => feature)
+      .map(({ name, description, languages, link }) => {
+        return `
             <div class="col-12 mb-2 bg-dark text-light p-3" style="border-radius:15px;">
               <h3 class="portfolio-item-title text-light">${name}</h3>
-              <h5 class="portfolio-languages">
+              ${languages.length > 0 ? `<h5 class="portfolio-languages">
                 Built With:
                 ${languages.join(", ")}
-              </h5>
+              </h5>` : ""}
               <p>${description}</p>
-              <a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project</a>
+              ${link !== "" ? `<a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project</a>` : ""}
             </div>
           `;
-			})
-			.join("")}
+      })
+      .join("")}
 
         ${projectsArr
-			.filter(({ feature }) => !feature)
-			.map(({ name, description, languages, link }) => {
-				return `
-            <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+      .filter(({ feature }) => !feature)
+      .map(({ name, description, languages, link }) => {
+        return `
+            <div class="col-12 mb-2 bg-dark text-light p-3" style="border-radius:15px;">
               <h3 class="portfolio-item-title text-light">${name}</h3>
-              <h5 class="portfolio-languages">
+              ${languages.length > 0 ? `<h5 class="portfolio-languages">
                 Built With:
                 ${languages.join(", ")}
-              </h5>
+              </h5>` : ""}
               <p>${description}</p>
-              <a href="${link}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project</a>
+              ${link !== "" ? `<a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project</a>` : ""}
             </div>
           `;
-			})
-			.join("")}
+      })
+      .join("")}
         </div>
       </section>
     `;
 };
 
 const generateExperiences = (experiences) => {
-	return `
+  return `
       <section class="my-4" id="portfolio">
         <h2 class="text-dark p-2 display-inline-block boldtext">Experience</h2>
         <div class="flex-row justify-space-between">
         ${experiences.map(({ title, description, technology, link }) => {
-			return `
+    return `
             <div class="col-12 mb-2 bg-dark text-light p-3" style="border-radius:15px;">
               <h3 class="portfolio-item-title text-light">${title}</h3>
               <h5 class="portfolio-languages">
                 Technology:
+                ${technology.length > 0 ? `<h5 class="portfolio-languages">
+                Built With:
                 ${technology.join(", ")}
+              </h5>` : ""}
               </h5>
               <p>${description}</p>
-              <a href="${link}" class="btn">
+              ${link !== "" ? `<a href="${link}" class="btn">
                 <i class="fab fa-github mr-2"></i>
                 View Work
-              </a>
+              </a>` : ""}
             </div>
           `;
-		})}
+  })}
+        </div>
+      </section>
+    `;
+};
+
+const generateContactDetails = (contactDetails) => {
+  return `
+      <section class="my-4" id="portfolio">
+        <h2 class="text-dark p-2 display-inline-block boldtext">Contact Me At</h2>
+        <div class="flex-row justify-space-between">
+        ${contactDetails.map(({ email, number, twitterLink, linkedinLink, instagramLink, githubLink }) => {
+    return `<div class="col-12 mb-2 bg-dark text-light p-3" style="border-radius:15px;">
+            ${email !== undefined ? `Email: <h3 class="portfolio-item-title text-light">${email}</h3>` : ""}
+            ${number !== undefined ? `Phone: <h3 class="portfolio-item-title text-light">${number}</h3>` : ""}
+            ${githubLink !== "" ? `<a href="${githubLink}" class="btn">@GitHub</a>` : ""}
+            ${linkedinLink !== "" ? `<a href="${linkedinLink}" class="btn">@LinkedIn</a>` : ""}
+            ${twitterLink !== "" ? `<a href="${twitterLink}" class="btn">@Twitter</a>` : ""}
+            ${instagramLink !== "" ? `<a href="${twitterLink}" class="btn">@Instagram</a>` : ""}
+            </div>`;
+  })}
         </div>
       </section>
     `;
 };
 
 module.exports = (templateData) => {
-	// destructure page data by section
-	const { projects, experiences, about, ...header } = templateData;
+  // destructure page data by section
+  const { projects, experiences, about, contactDetails, ...header } = templateData;
 
-	return `
+  return `
     <!DOCTYPE html>
     <html lang="en">
 
@@ -104,14 +127,12 @@ module.exports = (templateData) => {
         <div class="container flex-row justify-space-between align-center py-3">
           <div class="flex-row justify-space-between align-center">
             <img id="profileImg" class="mr-4" src="${header.imgUrl}" alt="${header.name}'s profile image" />
-            <h1 class="page-title text-secondary bg-dark py-2 px-3">${
-    header.name
-            }</h1>
+            <h1 class="page-title text-secondary bg-dark py-2 px-3">${header.name
+    }</h1>
           </div>
           <nav class="flex-row">
-            <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/${
-				header.github
-			}">GitHub</a>
+            <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/${header.github
+    }">GitHub</a>
           </nav>
         </div>
       </header>
@@ -119,11 +140,11 @@ module.exports = (templateData) => {
       ${generateAbout(about)}
       ${generateProjects(projects)}
       ${generateExperiences(experiences)}
+      ${generateContactDetails(contactDetails)}
       </main>
       <footer class="container text-center py-3">
-        <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${
-		header.name
-	}</h3>
+        <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name
+    }</h3>
       </footer>
     </body>
     </html>
