@@ -1,6 +1,6 @@
 # Portfolio Builder
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 🔥 The Complete Customizable Software which lets you create Developer Portfolio
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/TDP17"><img src="https://avatars.githubusercontent.com/u/71214045?v=4?s=100" width="100px;" alt=""/><br /><sub><b>TDP17</b></sub></a><br /><a href="https://github.com/Bauddhik-Geeks/Portfolio-Builder/commits?author=TDP17" title="Code">💻</a></td>
+    <td align="center"><a href="https://arcodeh.pro"><img src="https://avatars.githubusercontent.com/u/42589643?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Odeh Adejoh</b></sub></a><br /><a href="https://github.com/Bauddhik-Geeks/Portfolio-Builder/commits?author=stradox4u" title="Code">💻</a></td>
   </tr>
 </table>
 
